@@ -1,14 +1,30 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 export default function NavBar() {
   return (
     <div>
-      <Link to="/">Home</Link>
+      <NavLink
+        activeStyle={{ fontWeight: "bold" }}
+        to="/"
+        exact
+      >
+        Home
+      </NavLink>
       {" - "}
-      <Link to="/about">About</Link>
+      <NavLink
+        activeStyle={{ fontWeight: "bold" }}
+        to="/about"
+      >
+        About
+      </NavLink>
       {" - "}
-      <Link to="/discover">Discover</Link>
+      <NavLink
+        activeStyle={{ fontWeight: "bold" }}
+        to="/discover"
+      >
+        Discover
+      </NavLink>
     </div>
   );
 };
