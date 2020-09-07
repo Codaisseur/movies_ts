@@ -8,3 +8,4 @@
 7. Calling the search function and using a "search state" state cell
 8. Typing the API's results
 9. Displaying the search state & results
+10. Displaying a grid of the movie search results incl. poster images

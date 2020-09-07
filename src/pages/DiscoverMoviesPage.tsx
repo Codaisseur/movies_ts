@@ -1,13 +1,7 @@
 // src/pages/DiscoverMoviesPage.tsx
 import React, { useState } from "react";
 
-type Movie = {
-  Title: string;
-  Poster: string; // a url
-  Type: string; // e.g. "movie"
-  Year: string; // yep, a string instead of a number :|
-  imdbID: string;
-};
+import MovieItem, { Movie } from "../components/MovieItem";
 
 type ApiResult = {
   Response: "true";
@@ -44,7 +38,7 @@ export default function DiscoverMoviesPage() {
   };
 
   return (
-    <div>
+    <div style={{ margin: "20px" }}>
       <h1>Discover some movies!</h1>
       <p>
         <input
@@ -57,9 +51,15 @@ export default function DiscoverMoviesPage() {
       {state.status === "success" && (
         <div>
           <h2>Search results</h2>
-          {state.data.Search.slice(0, 10).map(movie => {
-            return <div>{movie.Title} ({movie.Year})</div>;
-          })}
+          <div style={{
+            display: "flex",
+            flexWrap: "wrap",
+            margin: "0 -10px",
+          }}>
+            {state.data.Search.slice(0, 10).map(movie => {
+              return <MovieItem key={movie.imdbID} movie={movie} />
+            })}
+          </div>
         </div>
       )}
     </div>
