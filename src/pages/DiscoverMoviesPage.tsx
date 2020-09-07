@@ -1,10 +1,24 @@
 // src/pages/DiscoverMoviesPage.tsx
 import React, { useState } from "react";
 
+type Movie = {
+  Title: string;
+  Poster: string; // a url
+  Type: string; // e.g. "movie"
+  Year: string; // yep, a string instead of a number :|
+  imdbID: string;
+};
+
+type ApiResult = {
+  Response: "true";
+  Search: Movie[];
+  totalResults: string; // yeah, that's weird indeed
+};
+
 type SearchState =
   | { status: "idle" }
   | { status: "loading" }
-  | { status: "success"; data: any } // todo: specify the data type too
+  | { status: "success"; data: ApiResult }
   | { status: "error"; error: any };
 
 export default function DiscoverMoviesPage() {
