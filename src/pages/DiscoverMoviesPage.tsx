@@ -35,7 +35,7 @@ export default function DiscoverMoviesPage() {
   
     // Option A: use the browser-native fetch function
     const data = await fetch(
-      `https://omdbapi.com/?apikey=b3d9013d&s=${queryParam}`
+      `https://omdbapi.com/?apikey=6a06f383&s=${queryParam}`
     ).then((r) => r.json());
 
     setState({ status: "success", data });
@@ -53,6 +53,15 @@ export default function DiscoverMoviesPage() {
         />
         <button onClick={search}>Search</button>
       </p>
+      {state.status === "loading" && <p>Searching...</p>}
+      {state.status === "success" && (
+        <div>
+          <h2>Search results</h2>
+          {state.data.Search.slice(0, 10).map(movie => {
+            return <div>{movie.Title} ({movie.Year})</div>;
+          })}
+        </div>
+      )}
     </div>
   );
 }

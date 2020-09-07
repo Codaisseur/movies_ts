@@ -7,3 +7,4 @@
 6. Added a controlled component to DiscoverMoviesPage
 7. Calling the search function and using a "search state" state cell
 8. Typing the API's results
+9. Displaying the search state & results
