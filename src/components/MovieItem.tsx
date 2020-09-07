@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 export type Movie = {
   Title: string;
@@ -21,7 +22,7 @@ export default function MovieItem({ movie }: Props) {
         boxSizing: "border-box",
       }}
     >
-      <div><strong>{movie.Title}</strong> ({movie.Year})</div>
+      <Link to={`/discover/${movie.imdbID}`}><strong>{movie.Title}</strong> ({movie.Year})</Link>
       <img
         src={movie.Poster}
         alt={movie.Title}
