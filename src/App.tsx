@@ -14,7 +14,7 @@ export default function App() {
     <div>
       <NavBar />
       <Switch>
-        <Route path="/discover/:imdbID" component={MoviePage} />
+        <Route path="/movie/:imdbID" component={MoviePage} />
         <Route path="/discover" component={DiscoverMoviesPage} />
         <Route path="/about" component={AboutPage} />
         <Route path="/" component={HomePage} />

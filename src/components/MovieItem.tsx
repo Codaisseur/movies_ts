@@ -22,7 +22,7 @@ export default function MovieItem({ movie }: Props) {
         boxSizing: "border-box",
       }}
     >
-      <Link to={`/discover/${movie.imdbID}`}><strong>{movie.Title}</strong> ({movie.Year})</Link>
+      <Link to={`/movie/${movie.imdbID}`}><strong>{movie.Title}</strong> ({movie.Year})</Link>
       <img
         src={movie.Poster}
         alt={movie.Title}
