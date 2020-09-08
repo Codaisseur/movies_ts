@@ -12,3 +12,4 @@
 11. Added separate single movie page, and links to it
 12. Fetching the movie on the single movie page
 13. Moved movie detail page to live at `/movie/:imdbID`
+14. Clicking "search" just navigates to `/discover/:searchText`

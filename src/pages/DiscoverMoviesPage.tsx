@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 
 import MovieItem, { Movie } from "../components/MovieItem";
+import { useHistory } from "react-router-dom";
 
 type ApiResult = {
   Response: "true";
@@ -16,26 +17,32 @@ type SearchState =
   | { status: "error"; error: any };
 
 export default function DiscoverMoviesPage() {
+  const history = useHistory();
   const [searchText, setSearchText] = useState("");
   const [state, setState] = useState<SearchState>({ status: "idle" });
 
-  const search = async () => {
-    console.log("Start searching for:", searchText);
-    setState({ status: "loading" });
-
-    // Best practice: encode the string so that special characters
-    //  like '&' and '?' don't accidentally mess up the URL
-    const queryParam = encodeURIComponent(searchText);
-  
-    // Option A: use the browser-native fetch function
-    const data = await fetch(
-      `https://omdbapi.com/?apikey=6a06f383&s=${queryParam}`
-    ).then((r) => r.json());
-
-    setState({ status: "success", data });
-
-    console.log("Success!", data);
+  const navigateToSearch = () => {
+    const routeParam = encodeURIComponent(searchText);
+    history.push(`/discover/${routeParam}`);
   };
+
+  // const search = async () => {
+  //   console.log("Start searching for:", searchText);
+  //   setState({ status: "loading" });
+
+  //   // Best practice: encode the string so that special characters
+  //   //  like '&' and '?' don't accidentally mess up the URL
+  //   const queryParam = encodeURIComponent(searchText);
+  
+  //   // Option A: use the browser-native fetch function
+  //   const data = await fetch(
+  //     `https://omdbapi.com/?apikey=6a06f383&s=${queryParam}`
+  //   ).then((r) => r.json());
+
+  //   setState({ status: "success", data });
+
+  //   console.log("Success!", data);
+  // };
 
   return (
     <div style={{ margin: "20px" }}>
@@ -45,7 +52,7 @@ export default function DiscoverMoviesPage() {
           value={searchText}
           onChange={e => setSearchText(e.target.value)}
         />
-        <button onClick={search}>Search</button>
+        <button onClick={navigateToSearch}>Search</button>
       </p>
       {state.status === "loading" && <p>Searching...</p>}
       {state.status === "success" && (
