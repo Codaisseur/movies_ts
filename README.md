@@ -10,3 +10,4 @@
 9. Displaying the search state & results
 10. Displaying a grid of the movie search results incl. poster images
 11. Added separate single movie page, and links to it
+12. Fetching the movie on the single movie page
